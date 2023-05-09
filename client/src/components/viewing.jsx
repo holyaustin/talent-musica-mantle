@@ -6,7 +6,6 @@ import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-import ShareLink from "react-twitter-share-link";
 
 import Talent from "../utils/Talent.json";
 import { talentMusicaAddress } from "../../config";
@@ -50,9 +49,9 @@ export default function ViewFile() {
     navigate("/live");
   }
   async function Claim() {
-    alert("This feature is under development because we want to give you the best expereince");
+    navigate("/dashboard");
   }
-  const rpcUrl = "https://devnet-rpc.altlayer.io/";
+  const rpcUrl = "https://rpc.testnet.mantle.xyz/";
   // const rpcUrl = "localhost";
 
   async function loadMusic() {
@@ -155,7 +154,7 @@ export default function ViewFile() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="chat"
-              >Chat with Talent
+              >Send Message to owner
               </a>
             </button>
           </div>
@@ -163,13 +162,7 @@ export default function ViewFile() {
             <button type="button" className="w-full bg-blue-800 text-white font-bold py-2 px-12 border-b-4 border-blue-200 hover:border-blue-500 rounded-full" onClick={() => Claim()}> leave a Comment</button>
           </div>
           <div className="p-4 bg-indigo-500">
-            <ShareLink link="https://talentmusica.vercel.app/explore" text="Discover amazing musical talent here!" hashtags="blockchaintechnology alt_layer Layer2 holyaustin ">
-              {(link) => (
-                <button type="button" className="w-full bg-blue-800 text-white font-bold py-2 px-12 border-b-4 border-blue-200 hover:border-blue-500 rounded-full">
-                  <a href={link} target="_blank" rel="noreferrer">Share this on Twitter</a>
-                </button>
-              )}
-            </ShareLink>
+            <button type="button" className="w-full bg-blue-800 text-white font-bold py-2 px-12 border-b-4 border-blue-200 hover:border-blue-500 rounded-full" onClick={() => Live()}>Stream Live</button>
           </div>
 
         </div>

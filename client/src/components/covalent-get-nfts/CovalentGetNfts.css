@@ -1,0 +1,44 @@
+.profile-img {
+    width: 250px;
+    border-radius: 50%;
+}
+
+.nft-col2 {
+    text-align: start;
+}
+
+.swap-card {
+    padding: 2rem;
+}
+
+.nft-img {
+    width: 180px;
+    vertical-align: middle;
+}
+
+.container-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info {
+    margin-bottom: 0.5rem;
+}
+
+.card-padding {
+    padding: 1rem;
+}
+
+.line-break {
+    line-break: anywhere;
+}
+
+.search-container {
+    width: 50%;
+    margin: auto;
+}
+
+.img-donation {
+    width: 80%;
+    border-radius: 6%;
+}

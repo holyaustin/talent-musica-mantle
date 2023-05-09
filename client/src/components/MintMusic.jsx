@@ -7,6 +7,7 @@ import { NFTStorage } from "nft.storage";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
+// import lit from "./lit";
 import Talent from "../utils/Talent.json";
 import { talentMusicaAddress } from "../../config";
 
@@ -15,6 +16,11 @@ const APIKEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDA
 
 const MintMusic = () => {
   const navigate = useNavigate();
+  // const [file, setFile] = useState(null);
+  // const [encryptedUrlArr, setEncryptedUrlArr] = useState([]);
+  // const [encryptedKeyArr, setEncryptedKeyArr] = useState([]);
+  // const [decryptedFileArr, setDecryptedFileArr] = useState([]);
+
   const [errorMessage, setErrorMessage] = useState(null);
   const [uploadedFile, setUploadedFile] = useState();
   const [imageView, setImageView] = useState();
@@ -59,11 +65,12 @@ const MintMusic = () => {
 
   const sendTxToBlockchain = async (metaData) => {
     try {
-      setTxStatus("connecting to ALTLAYER Blockchain.");
+      setTxStatus("connecting to Blockchain.");
       const web3Modal = new Web3Modal();
       const connection = await web3Modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
 
+      // const price = ethers.utils.parseUnits(formInput.price, "ether");
       const connectedContract = new ethers.Contract(talentMusicaAddress, Talent.abi, provider.getSigner());
       console.log("Connected to contract", talentMusicaAddress);
       console.log("IPFS blockchain uri is ", metaData.url);
@@ -73,7 +80,7 @@ const MintMusic = () => {
       await mintNFTTx.wait();
       return mintNFTTx;
     } catch (error) {
-      setErrorMessage("Failed to send tx to ALTLAYER.");
+      setErrorMessage("Failed to send tx to Blockchain.");
       console.log(error);
     }
   };
@@ -84,7 +91,7 @@ const MintMusic = () => {
     console.log("image ipfs path is", imgViewString);
     setImageView(imgViewString);
     setMetaDataURl(getIPFSGatewayURL(metaData.url));
-    setTxURL(`https://devnet-explorer.altlayer.io/tx/${mintNFTTx.hash}`);
+    //setTxURL(`https://explorer.testnet.mantle.xyz/tx/${mintNFTTx.hash}`);
     setTxStatus("Talent registration was successfully!");
     console.log("Preview details completed");
   };
@@ -105,7 +112,9 @@ const MintMusic = () => {
 
   const getIPFSGatewayURL = (ipfsURL) => {
     const urlArray = ipfsURL.split("/");
+    // console.log("urlArray = ", urlArray);
     const ipfsGateWayURL = `https://${urlArray[2]}.ipfs.nftstorage.link/${urlArray[3]}`;
+    // console.log("ipfsGateWayURL = ", ipfsGateWayURL)
     return ipfsGateWayURL;
   };
 
@@ -153,6 +162,8 @@ const MintMusic = () => {
               title="Ebook "
               src={imageView}
               alt="NFT preview"
+              frameBorder="0"
+              scrolling="auto"
               height="50%"
               width="100%"
             />

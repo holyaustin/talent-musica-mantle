@@ -44,7 +44,7 @@ Live Dapp - https://talent-musica-mantle-8ca153.spheron.app/
 
 
 
-Deployed to Mantle: [0x8D36089AB6eFdB3FEb2D8Ed42F7eC80f3c6d2b11](https://devnet-explorer.altlayer.io/address/0x8D36089AB6eFdB3FEb2D8Ed42F7eC80f3c6d2b11)
+Deployed to Mantle: [0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d](https://explorer.testnet.mantle.xyz/address/0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d)
 
 
 ## Connect with me and send me a mail

@@ -5,6 +5,8 @@ import injectedModule from "@web3-onboard/injected-wallets";
 import Onboard from "@web3-onboard/core";
 import logo1 from "../assets/bg.png";
 import logo2 from "../assets/headphone.jpeg";
+import MoralisLogin from "./moralisLogin.tsx";
+import Transak from '@biconomy/transak';
 
 const coinbaseWalletSdk = coinbaseWalletModule();
 const walletConnect = walletConnectModule();
@@ -12,16 +14,18 @@ const injected = injectedModule();
 
 const modules = [coinbaseWalletSdk, walletConnect, injected];
 
-const TESTNET_RPC_URL = "https://devnet-rpc.altlayer.io/";
+const TESTNET_RPC_URL = "https://rpc.testnet.mantle.xyz/";
+
+
 
 const onboard = Onboard({
   wallets: modules, // created in previous step
   chains: [
     {
-      id: "0x9990",
-      token: "ALT",
+      id: "0x97",
+      token: "BNB",
       namespace: "evm",
-      label: "ALTLAYER Devnet",
+      label: "BSC Testnet",
       rpcUrl: TESTNET_RPC_URL
     },
   ],
@@ -37,6 +41,8 @@ const onboard = Onboard({
   }
 });
 
+
+
 const Welcome = () => {
   const [account, setAccount] = useState();
 
@@ -49,6 +55,11 @@ const Welcome = () => {
       console.error(error);
     }
   };
+
+  // use this info for transak package
+  const transak = new Transak('STAGING');
+  //transak.init();
+
 
   return (
     <div className="flex w-full mf:flex-row flex-col justify-center items-center bg-gray-100">
@@ -66,10 +77,14 @@ const Welcome = () => {
           </div>
 
           <br />
-
+          <MoralisLogin />
+          
+       
+          {/** {!currentAccount && ( )}
           <button
             type="button"
-            onClick={connectWallet2}
+            // onClick={connectWallet2}
+            onClick={MoralisLogin}
             className="flex flex-row justify-center items-center my-5 bg-red-700 p-3 rounded-full cursor-pointer hover:bg-yellow-500 hover:text-white"
           >
 
@@ -81,7 +96,7 @@ const Welcome = () => {
           <div className="text-black text-2xl font-semibold mx-4 my-5 ">
             <div>Connected Wallet Address: <br /> {account}</div>
           </div>
-
+ */}
         </div>
       </div>
       <div className="sm:flex-[1.2] lg:flex-[1.9]flex-initial justify-left items-center">

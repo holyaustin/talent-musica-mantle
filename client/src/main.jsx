@@ -8,6 +8,7 @@ import Explore from "./pages/explore";
 import Create from "./pages/create";
 import Live from "./pages/live";
 import Watch from "./pages/watch";
+import MyNfts from "./pages/mynfts";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Route path="live" element={<Live />} />
           <Route path="create" element={<Create />} />
           <Route path="watch" element={<Watch />} />
+          <Route path="mynfts" element={<MyNfts />} />
         </Routes>
       </BrowserRouter>
     </MoralisProvider>

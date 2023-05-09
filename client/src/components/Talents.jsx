@@ -23,7 +23,7 @@ export default function Talents() {
     return ipfsGateWayURL;
   };
 
-  const rpcUrl = "https://devnet-rpc.altlayer.io/";
+  const rpcUrl = "https://rpc.testnet.mantle.xyz/";
   // const rpcUrl = "http://localhost:8545";
 
   async function loadTalent() {
@@ -73,6 +73,24 @@ export default function Talents() {
       }
     });
     console.log("Prop result without {} is ", { vid });
+
+    /* needs the user to sign the transaction, so will use Web3Provider and sign it
+    console.log("item id clicked is", nft.tokenId);
+    const web3Modal = new Web3Modal();
+    const connection = await web3Modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = new ethers.Contract(talentMusicaAddress, Talent.abi, signer);
+*/
+    /* user will be prompted to pay the asking proces to complete the transaction
+    const transaction = await contract.createMarketSale(nft.tokenId);
+    await transaction.wait();
+    console.log("Talent transaction completed, Talent should show in UI ");
+    const token = nft.tokenId;
+    console.log("token id is ", token);
+    loadTalent();
+    // navigate("/view", { state: token });
+    */
   }
   if (loadingState === "loaded" && !nfts.length) {
     return (

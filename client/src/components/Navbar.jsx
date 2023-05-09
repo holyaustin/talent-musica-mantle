@@ -3,6 +3,7 @@ import { HiMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import logo from "../assets/mic.png";
+import Transak from '@biconomy/transak';
 
 const NavBarItem = ({ title, classprops }) => (
   <li className={`mx-4 cursor-pointer ${classprops}`}>{title}</li>
@@ -10,6 +11,13 @@ const NavBarItem = ({ title, classprops }) => (
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(false);
+
+
+  const transakk = async () => {  // use this info for transak package
+    const transak = new Transak('STAGING');
+    transak.init();
+  }
+
 
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4 bg-blue-700">
@@ -23,8 +31,20 @@ const Navbar = () => {
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <Link to="/explore">Explore</Link>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <Link to="/mynfts">My-NFTs</Link>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
         <Link to="/live">Go-Live</Link>
         <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <button
+            type="button"
+            onClick={transakk}
+            className="flex flex-row justify-center items-center my-5 bg-red-700 p-3 rounded-full cursor-pointer hover:bg-yellow-500 hover:text-white"
+          >
+
+            <p className="text-white text-3xl font-semibold py-1 px-6 mx-14 hover:text-red-700">
+              Buy Token
+            </p>
+          </button>
 
         <li className="text-white font-semibold bg-red-700 py-5 px-20 mx-8 sm:mx-3 sm:py-2 sm:px-8 rounded-full cursor-pointer hover:bg-yellow-500 hover:text-red-700">
           <a href="https://discord.com" target="_blank" rel="noreferrer">
