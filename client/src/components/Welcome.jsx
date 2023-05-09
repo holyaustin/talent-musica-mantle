@@ -6,7 +6,6 @@ import Onboard from "@web3-onboard/core";
 import logo1 from "../assets/bg.png";
 import logo2 from "../assets/headphone.jpeg";
 import MoralisLogin from "./moralisLogin.tsx";
-import Transak from '@biconomy/transak';
 
 const coinbaseWalletSdk = coinbaseWalletModule();
 const walletConnect = walletConnectModule();
@@ -46,6 +45,8 @@ const onboard = Onboard({
 const Welcome = () => {
   const [account, setAccount] = useState();
 
+
+
   const connectWallet2 = async () => {
     try {
       const wallets = await onboard.connectWallet();
@@ -55,11 +56,6 @@ const Welcome = () => {
       console.error(error);
     }
   };
-
-  // use this info for transak package
-  const transak = new Transak('STAGING');
-  //transak.init();
-
 
   return (
     <div className="flex w-full mf:flex-row flex-col justify-center items-center bg-gray-100">

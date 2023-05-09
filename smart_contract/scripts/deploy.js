@@ -7,7 +7,7 @@ async function main() {
   await talent.deployed();
   console.log("talentMusica deployed to:", talent.address);
 
-  fs.writeFileSync('./config.js', `
+  fs.writeFileSync('./config2.js', `
   export const talentMusicaAddress = "${talent.address}"
   `)
 }

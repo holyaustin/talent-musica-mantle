@@ -1,6 +1,7 @@
 require("@nomiclabs/hardhat-waffle");
 require('dotenv').config();
 
+
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
@@ -10,6 +11,11 @@ module.exports = {
     mantle: {
       url: "https://rpc.testnet.mantle.xyz/", 
       chainId: 5001,
+      accounts: [process.env.PRIVATE_KEY],
+    },
+    liberty: {
+      url: "https://liberty20.shardeum.org/",
+      chainId: 8081,
       accounts: [process.env.PRIVATE_KEY],
     },
   },

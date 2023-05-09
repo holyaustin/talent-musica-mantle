@@ -7,9 +7,13 @@ import { NFTStorage } from "nft.storage";
 import { useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 import Web3Modal from "web3modal";
-// import lit from "./lit";
 import Talent from "../utils/Talent.json";
 import { talentMusicaAddress } from "../../config";
+import { Polybase } from "@polybase/client";
+
+const db = new Polybase({
+  defaultNamespace: "pk/0xa08044cc7ba5415c39c7f20ad88b04a82f7cf8e850d968cacf2bcddd46615a75afc495b1e69786fb67c542a70b91946e0ac02a61fdd7a17bb2fd407676b28afa/Talent-musica",
+});
 
 // eslint-disable-next-line max-len
 const APIKEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDA4Zjc4ODAwMkUzZDAwNEIxMDI3NTFGMUQ0OTJlNmI1NjNFODE3NmMiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1MzA1NjE4NzM4MCwibmFtZSI6InBlbnNpb25maSJ9.agI-2V-FeK_eVRAZ-T6KGGfE9ltWrTUQ7brFzzYVwdM";
@@ -37,6 +41,18 @@ const MintMusic = () => {
     setMetaDataURl("");
     setTxURL("");
   };
+
+  const PolybaseDB = async (metaData) => {  // use this info for transak package
+    console.log("Inside Polybase");
+    console.log("db is ", db);
+
+    const tname = metaData.data.name;
+    console.log("name field is", tname);
+    const tcontact = metaData.data.properties.contact;
+    console.log("twitter field is", tcontact);
+    await db.collection("Talent").create([metaData.url, tname, tcontact]); 
+    
+  }
 
   const uploadNFTContent = async (inputFile) => {
     const { name, description, contact } = formInput;
@@ -100,7 +116,8 @@ const MintMusic = () => {
     e.preventDefault();
     // 1. upload NFT content via NFT.storage
     const metaData = await uploadNFTContent(uploadedFile);
-
+    // save to PolyBase
+    await PolybaseDB(metaData);
     // 2. Mint a NFT token on BSC
     const mintNFTTx = await sendTxToBlockchain(metaData);
 

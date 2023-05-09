@@ -36,8 +36,9 @@ This project is a Hackathon project sponsored by DevPost - Spheron dAppAthon. Th
 ## Web 3.0 technologies Used
 
 Frontend: vite + react.js, postcss, tailwindcss, 
-web3 technologies: Moralis, IPFS/filecoin, LivePeer, ethers.js
+web3 technologies: Moralis, IPFS/filecoin, LivePeer, ethers.js, PolyBase, Biconomy
 Backend: Solidity, Node.js
+BlockChain: Mantle, Shardeum (Liberty2)
 
 ## Demo / Live Links
 Live Dapp - https://talent-musica-mantle-8ca153.spheron.app/
@@ -45,6 +46,8 @@ Live Dapp - https://talent-musica-mantle-8ca153.spheron.app/
 
 
 Deployed to Mantle: [0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d](https://explorer.testnet.mantle.xyz/address/0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d)
+
+Deployed to Shardeum Liberty2x: [0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d](https://explorer.testnet.mantle.xyz/address/0xfBeFdC343861EDc521dD2512B4B64B33bB663E4d)
 
 
 ## Connect with me and send me a mail

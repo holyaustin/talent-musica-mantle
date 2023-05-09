@@ -41,7 +41,7 @@ const Navbar = () => {
             className="flex flex-row justify-center items-center my-5 bg-red-700 p-3 rounded-full cursor-pointer hover:bg-yellow-500 hover:text-white"
           >
 
-            <p className="text-white text-3xl font-semibold py-1 px-6 mx-14 hover:text-red-700">
+            <p className="text-white font-semibold py-1 px-6 mx-14 hover:text-red-700">
               Buy Token
             </p>
           </button>
